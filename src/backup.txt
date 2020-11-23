@@ -1,0 +1,68 @@
+        // create an array of product from file
+        String[] lines = fileIO
+                .read(arguments.getPathFileProductInput())
+                .split(System.lineSeparator());
+        Product[] products = new Product[lines.length];
+
+        for (int i = 0; i < lines.length; i++) {
+            String[] elements = lines[i].split(Constants.CSV_DELIMITER);
+            products[i] = new Product(
+                    Integer.parseInt(elements[0]),
+                    elements[1],
+                    Double.parseDouble(elements[2]));
+        }
+
+        // create an array of discount card from file
+        lines = fileIO
+                .read(Constants.DEFAULT_PATH_FILE_CARD_INPUT)
+                .split(System.lineSeparator());
+        DiscountCard[] discountCards = new DiscountCard[lines.length];
+
+        for (int i = 0; i < lines.length; i++) {
+            String[] elements = lines[i].split(Constants.CSV_DELIMITER);
+            discountCards[i] = new DiscountCard(
+                    Integer.parseInt(elements[0]),
+                    Double.parseDouble(elements[1]));
+        }
+
+
+// 10-ти процентная скидка предоставляется на все товары,
+// стоимость которых равняется или превышает 4 доллара за штуку
+// и количество которых покупается не менее пяти штук.
+// изменить значения можно в классе Constants
+
+//        List<Product> products = factory.getListObjectFromFile(arguments.getPathFileProductInput(), "product");
+//        List<DiscountCard> discountCars = factory.getListObjectFromFile(arguments.getPathFileCardInput(), "card");
+//
+
+    public <E> List<E> getListObjectFromFile(String filePath, String typeObject) {
+        List<E> list = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new File(filePath))) {
+            scanner.useDelimiter(Constants.CSV_DELIMITER + "|" + System.lineSeparator());
+            scanner.useLocale(Locale.ENGLISH);
+            while (scanner.hasNext()) {
+                ObjectKind ok = ObjectKind.valueOf(typeObject.toUpperCase());
+                list.add((E) ok.createObject(scanner));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File " + filePath + " does not exist.");
+        }
+        return list;
+    }
+
+    private enum ObjectKind {
+        PRODUCT {
+            @Override
+            Object createObject(Scanner scanner) {
+                return new Product(scanner);
+            }
+        },
+        CARD {
+            @Override
+            Object createObject(Scanner scanner) {
+                return new DiscountCard(scanner);
+            }
+        };
+
+        abstract Object createObject(Scanner scanner);
+    }
