@@ -30,7 +30,10 @@
 
 Примеры запуска: 
 java CheckRunner -dsc 3421 -check file/check.txt -prod file/prod.csv -card file/card.csv -buy "27-3 36-8 38-1 8-10 9-9 14-2 23-8"
+
 java CheckRunner -dsc 3422 -check file/check1.txt -buy "27-3 36-8 39-1 8-10 9-9 14-2 23-8 14-7 3-23"
+
 java CheckRunner -dsc 1234
+
 java CheckRunner -dsc 3421 -prod file/prod.csv -card file/card.csv -buy "27-3 36-8 39-1 8-10 9-9 14-2 23-8 14-7 3-23 17-8 6-5 45-8 35-12"
 
