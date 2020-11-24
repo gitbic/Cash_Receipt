@@ -4,6 +4,7 @@ import java.util.*;
 
 public class CheckRunner {
     public static void main(String[] args) {
+
         Arguments arguments = new Arguments();
         arguments.parseArguments(args);
         Factory factory = new Factory();
@@ -36,17 +37,31 @@ public class CheckRunner {
                     Double.parseDouble(elements[1])));
         }
 
+        // get discount card for order
+        String num = arguments.getCardNumber();
+        DiscountCard myCard = cardMap.get(num);
+        if (myCard == null) {
+            myCard = new DiscountCard("", 0);
+            if (!num.equals("")) {
+                System.out.println("Error: card 'number=" + num + "' doesnt exist.");
+            }
+        }
+
         // create main order for all purchases
-        DiscountCard myCard = cardMap.getOrDefault(arguments.getCardNumber(), new DiscountCard("", 0));
         MainOrder mainOrder = new MainOrder(myCard);
         for (Map.Entry<Integer, Integer> position : arguments.getOrder().entrySet()) {
-            Product product = productMap.get(position.getKey());
+            int id = position.getKey();
+            if (!productMap.containsKey(id)) {
+                System.out.println("Error: product 'id=" + id + "' doesnt exist.");
+                continue;
+            }
+            Product product = productMap.get(id);
             mainOrder.addPurchaseToList((factory.createPurchase(product, position.getValue())));
         }
 
+        // print check to console and file
         System.out.println(mainOrder.getCheck());
         fileIO.write(arguments.getPathFileCheckOutput(), mainOrder.getCheck());
-
     }
 }
 
