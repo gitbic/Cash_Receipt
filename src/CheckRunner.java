@@ -46,10 +46,10 @@ public class CheckRunner {
 
         System.out.println(mainOrder.getCheck());
 
+        fileIO.write(arguments.getPathFileCheckOutput(), mainOrder.getCheck());
+
 
     }
-
-
 }
 
 

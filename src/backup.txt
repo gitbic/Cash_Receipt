@@ -66,3 +66,30 @@
 
         abstract Object createObject(Scanner scanner);
     }
+
+
+
+//    public void parseArguments(String[] args) {
+//        for (int i = 0; i < args.length; ++i) {
+//            switch (args[i]) {
+//                case "-prod":
+//                    pathFileProductInput = args[++i];
+//                    break;
+//                case "-check":
+//                    pathFileCheckOutput = args[++i];
+//                    break;
+//                case "-card":
+//                    pathFileCardInput = args[++i];
+//                    break;
+//                case "-buy":
+//                    order = readOrder(args[++i]);
+//                    break;
+//                case "-dsc":
+//                    discountCard = args[++i];
+//                    break;
+//                default:
+//                    System.out.println("Unknown argument: " + args[i]);
+//                    break;
+//            }
+//        }
+//    }
