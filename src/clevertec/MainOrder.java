@@ -57,7 +57,7 @@ public final class MainOrder {
         StringBuilder sb = new StringBuilder();
         String tab = Constants.TAB_SPACE;
         String tabNum = tab.repeat(6);
-        String separator = "=".repeat(40) + System.lineSeparator();
+        String separator = "=".repeat(42) + System.lineSeparator();
 
         String head = "QTY" + tab
                 + "DESCRIPTION" + tab + tab

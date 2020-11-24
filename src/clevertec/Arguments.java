@@ -21,21 +21,25 @@ public final class Arguments {
     }
 
     public void parseArguments(String[] args) {
+
+
         for (int i = 0; i < args.length; ++i) {
-            switch (args[i]) {
-                case "-products":
+            ArgumentsName ar = ArgumentsName.valueOfString(args[i]);
+
+            switch (ar) {
+                case PROD:
                     pathFileProductInput = args[++i];
                     break;
-                case "-check":
+                case CHECK:
                     pathFileCheckOutput = args[++i];
                     break;
-                case "-cards":
+                case CARD:
                     pathFileCardInput = args[++i];
                     break;
-                case "-buy":
+                case BUY:
                     order = readOrder(args[++i]);
                     break;
-                case "-dsc":
+                case DSC:
                     discountCard = args[++i];
                     break;
                 default:
