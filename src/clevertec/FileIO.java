@@ -3,7 +3,7 @@ package clevertec;
 import java.io.*;
 import java.util.Scanner;
 
-public final class FileIO{
+public final class FileIO {
 
     public String read(String filePath) {
         StringBuilder sb = new StringBuilder();

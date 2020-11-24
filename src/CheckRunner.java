@@ -4,11 +4,10 @@ import java.util.*;
 
 public class CheckRunner {
     public static void main(String[] args) {
-        FileIO fileIO = new FileIO();
         Arguments arguments = new Arguments();
         arguments.parseArguments(args);
-
         Factory factory = new Factory();
+        FileIO fileIO = new FileIO();
 
         // create map products: key(id), value(Product)
         String[] lines = fileIO
@@ -29,25 +28,24 @@ public class CheckRunner {
                 .read(arguments.getPathFileCardInput())
                 .split(System.lineSeparator());
 
-        Map<String, DiscountCard> discountCardMap = new HashMap<>();
+        Map<String, DiscountCard> cardMap = new HashMap<>();
         for (String line : lines) {
             String[] elements = line.split(Constants.CSV_DELIMITER);
-            discountCardMap.put(elements[0], new DiscountCard(
+            cardMap.put(elements[0], new DiscountCard(
                     elements[0],
                     Double.parseDouble(elements[1])));
         }
 
         // create main order for all purchases
-        MainOrder mainOrder = new MainOrder(discountCardMap.get(arguments.getDiscountCard()));
+        DiscountCard myCard = cardMap.getOrDefault(arguments.getCardNumber(), new DiscountCard("", 0));
+        MainOrder mainOrder = new MainOrder(myCard);
         for (Map.Entry<Integer, Integer> position : arguments.getOrder().entrySet()) {
             Product product = productMap.get(position.getKey());
             mainOrder.addPurchaseToList((factory.createPurchase(product, position.getValue())));
         }
 
         System.out.println(mainOrder.getCheck());
-
         fileIO.write(arguments.getPathFileCheckOutput(), mainOrder.getCheck());
-
 
     }
 }

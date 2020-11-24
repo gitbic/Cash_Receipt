@@ -10,14 +10,14 @@ public final class Arguments {
     private String pathFileCheckOutput;
     private String pathFileCardInput;
     private Map<Integer, Integer> order;
-    private String discountCard;
+    private String cardNumber;
 
     {
         pathFileProductInput = Constants.DEFAULT_PATH_FILE_PRODUCT_INPUT;
         pathFileCheckOutput = Constants.DEFAULT_PATH_FILE_CHECK_OUTPUT;
         pathFileCardInput = Constants.DEFAULT_PATH_FILE_CARD_INPUT;
         order = new HashMap<>();
-        discountCard = "";
+        cardNumber = "";
     }
 
     public void parseArguments(String[] args) {
@@ -40,7 +40,7 @@ public final class Arguments {
                     order = readOrder(args[++i]);
                     break;
                 case DSC:
-                    discountCard = args[++i];
+                    cardNumber = args[++i];
                     break;
                 default:
                     System.out.println("Unknown argument: " + args[i]);
@@ -74,7 +74,7 @@ public final class Arguments {
         return order;
     }
 
-    public String getDiscountCard() {
-        return discountCard;
+    public String getCardNumber() {
+        return cardNumber;
     }
 }

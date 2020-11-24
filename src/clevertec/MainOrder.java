@@ -56,11 +56,11 @@ public final class MainOrder {
     public String getCheck() {
         StringBuilder sb = new StringBuilder();
         String tab = Constants.TAB_SPACE;
-        String tabNum = tab.repeat(6);
+        String tabNum = tab.repeat(4);
         String separator = "=".repeat(42) + System.lineSeparator();
 
         String head = "QTY" + tab
-                + "DESCRIPTION" + tab + tab
+                + "DESCRIPTION" + tab
                 + "PRICE" + tab
                 + "TOTAL" + tab
                 + "DISC" + System.lineSeparator()

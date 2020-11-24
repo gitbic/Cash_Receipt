@@ -24,20 +24,19 @@ public class Purchase {
     }
 
     public String toCheck() {
-        return number + Constants.TAB_SPACE +
-                product.toCheck() + Constants.TAB_SPACE +
-                Utility.priceToString(getCost());
+        return number + Constants.TAB_SPACE
+                + product.toCheck() + Constants.TAB_SPACE
+                + Utility.priceToString(getCost());
     }
 
     protected String fieldToString() {
-        return "Purchase{" +
-                product +
-                ", number=" + number;
+        return "Purchase{"
+                + product
+                + ", number=" + number;
     }
 
     @Override
     public String toString() {
-        return fieldToString() +
-                ", cost=" + Utility.priceToString(getCost());
+        return fieldToString() + ", cost=" + Utility.priceToString(getCost());
     }
 }

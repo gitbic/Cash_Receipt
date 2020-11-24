@@ -1,10 +1,13 @@
-QTY	DESCRIPTION		PRICE	TOTAL	DISC
+QTY	DESCRIPTION	PRICE	TOTAL	DISC
 ==========================================
 8	Kiwi           $5.52	$39.74	10.00%
 1	Strawberry     $5.20	$5.20
+8	Grape          $2.88	$23.04
 10	Orange         $0.99	$9.90
+9	Mandarin       $6.25	$50.63	10.00%
 3	Raspberry      $2.71	$8.13
+2	Banana         $1.47	$2.94
 ==========================================
-TOTAL						$62.97
-DISC						$1.34	2.12%
-TO PAY						$61.64
+TOTAL				$139.58
+DISC				$2.96	2.12%
+TO PAY				$136.62

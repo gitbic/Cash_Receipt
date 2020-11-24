@@ -16,10 +16,6 @@ public final class Product {
         discountForQuantity = value >= Constants.PRICE_FOR_DISCOUNT;
     }
 
-    public Product(Scanner scanner) {
-        this(scanner.nextInt(), scanner.next(), scanner.nextDouble());
-    }
-
     public int getId() {
         return id;
     }
@@ -40,21 +36,19 @@ public final class Product {
         this.discountForQuantity = discountForQuantity;
     }
 
-
     public String toCheck() {
         int num = 15 - name.length();
         String space = String.format("%" + num + "s", "");
-        return name + space +
-                Utility.priceToString(price);
+        return name + space + Utility.priceToString(price);
     }
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                ", price=" + Utility.priceToString(price) +
-                (discountForQuantity ? ", discount for quantity" : "") +
-                '}';
+        return "Product{"
+                + "id=" + id
+                + ", name='" + name + "'"
+                + ", price=" + Utility.priceToString(price)
+                + (discountForQuantity ? ", discount for quantity" : "")
+                + '}';
     }
 }
