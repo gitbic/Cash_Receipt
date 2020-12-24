@@ -1,7 +1,5 @@
 package clevertec;
 
-import java.util.Scanner;
-
 public final class DiscountCard {
     private final String number;
     private final double discount;
