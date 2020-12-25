@@ -1,4 +1,8 @@
 import clevertec.*;
+import clevertec.beans.Arguments;
+import clevertec.beans.DiscountCard;
+import clevertec.beans.MainOrder;
+import clevertec.beans.Product;
 
 import java.util.*;
 

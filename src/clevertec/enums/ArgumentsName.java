@@ -1,4 +1,4 @@
-package clevertec;
+package clevertec.enums;
 
 public enum ArgumentsName {
     PROD,

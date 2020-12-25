@@ -1,4 +1,8 @@
-package clevertec;
+package clevertec.beans;
+
+import clevertec.Constants;
+import clevertec.Utility;
+import clevertec.enums.TableMenu;
 
 import java.math.BigDecimal;
 
@@ -17,8 +21,9 @@ public final class PurchaseDiscountQuantity extends Purchase {
 
     @Override
     public String toCheck() {
-        return super.toCheck() + Constants.TAB_SPACE +
-                Utility.percentToString(Constants.DISCOUNT_PERCENT);
+        return super.toCheck()
+                + String.format(TableMenu.DISCOUNT.getFormatForCell(),
+                Utility.percentToString(Constants.DISCOUNT_PERCENT));
     }
 
     @Override

@@ -1,4 +1,7 @@
-package clevertec;
+package clevertec.beans;
+
+import clevertec.Constants;
+import clevertec.enums.ArgumentsName;
 
 import java.util.HashMap;
 import java.util.Map;

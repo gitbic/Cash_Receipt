@@ -1,5 +1,9 @@
 package clevertec;
 
+import clevertec.beans.Product;
+import clevertec.beans.Purchase;
+import clevertec.beans.PurchaseDiscountQuantity;
+
 public final class Factory {
 
     public Purchase createPurchase(Product product, int number) {

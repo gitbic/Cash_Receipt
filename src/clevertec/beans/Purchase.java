@@ -1,6 +1,10 @@
-package clevertec;
+package clevertec.beans;
+
+import clevertec.Utility;
+import clevertec.enums.TableMenu;
 
 import java.math.BigDecimal;
+import java.util.Formatter;
 
 public class Purchase {
     private final Product product;
@@ -24,9 +28,11 @@ public class Purchase {
     }
 
     public String toCheck() {
-        return number + Constants.TAB_SPACE
-                + product.toCheck() + Constants.TAB_SPACE
-                + Utility.priceToString(getCost());
+        Formatter f = new Formatter();
+        f.format(TableMenu.QTY.getFormatForCell(), number);
+        f.format(product.toCheck());
+        f.format(TableMenu.TOTAL.getFormatForCell(), Utility.priceToString(getCost()));
+        return f.toString();
     }
 
     protected String fieldToString() {

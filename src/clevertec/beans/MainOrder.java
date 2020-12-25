@@ -1,4 +1,8 @@
-package clevertec;
+package clevertec.beans;
+
+import clevertec.Utility;
+import clevertec.enums.TableMenu;
+import clevertec.enums.TableTail;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -54,16 +58,10 @@ public final class MainOrder {
     }
 
     public String getCheck() {
-        StringBuilder sb = new StringBuilder();
-        String tab = Constants.TAB_SPACE;
-        String tabNum = tab.repeat(4);
-        String separator = "=".repeat(42) + System.lineSeparator();
+        String separator = "=".repeat(TableMenu.getTotalWidth()) + System.lineSeparator();
 
-        String head = "QTY" + tab
-                + "DESCRIPTION" + tab
-                + "PRICE" + tab
-                + "TOTAL" + tab
-                + "DISC" + System.lineSeparator()
+        String head = TableMenu.getHead()
+                + System.lineSeparator()
                 + separator;
 
         StringBuilder body = new StringBuilder();
@@ -71,11 +69,11 @@ public final class MainOrder {
             body.append(purchase.toCheck()).append(System.lineSeparator());
         }
 
+        String tailString = TableTail.getTailFormatString();
         String tail = separator
-                + "TOTAL" + tabNum + Utility.priceToString(getTotalCost()) + System.lineSeparator()
-                + "DISC" + tabNum + Utility.priceToString(getDiscountCost())
-                + tab + Utility.percentToString(discountCard.getDiscount()) + System.lineSeparator()
-                + "TO PAY" + tabNum + Utility.priceToString(getFinalCost()) + System.lineSeparator();
+                + String.format(tailString, TableTail.TOTAL, Utility.priceToString(getTotalCost()))
+                + String.format(tailString, TableTail.DISCOUNT, Utility.percentToString(discountCard.getDiscount()))
+                + String.format(tailString, TableTail.TO_PAY, Utility.priceToString(getFinalCost()));
 
         return head + body + tail;
     }
